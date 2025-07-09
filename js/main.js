@@ -11,7 +11,8 @@ function updateCounterDisplay(days) {
 
 function animateCounterFromZero(targetDays) {
     const element = document.getElementById('days');
-    const duration = 4000; // 4 seconds
+    // Make duration proportional to target number: 100ms per day, min 1s, max 5s
+    const duration = Math.max(1000, Math.min(5000, targetDays * 100));
     const startTime = performance.now();
     
     function animate(currentTime) {
