@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Bristol';
+  src: url('../fonts/Bristol.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SmoothMarker';
+  src: url('../fonts/SmoothMarker-45d6.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  font-family: 'Bristol', cursive;
+}
+
+body {
+  background: url('../img/Whiteboard_with_markers.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 80px 60px 60px 60px;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.whiteboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.whiteboard-header h1 {
+  font-size: 3.5em;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  transform: rotate(-1.5deg);
+}
+
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.time-unit {
+  text-align: center;
+  min-width: 120px;
+}
+
+.number-display {
+  font-size: 8em;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  cursor: pointer;
+  font-family: 'SmoothMarker', cursive;
+}
+
+.number-display:hover {
+  transform: rotate(1deg) scale(1.1);
+  color: #333333;
+}
+
+.number-display.updating {
+  animation: number-update 0.3s ease-in-out;
+}
+
+@keyframes number-update {
+  0% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.1); color: #27ae60; }
+  100% { transform: rotate(-2deg) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .counter-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .whiteboard-header h1 {
+    font-size: 2.5em;
+  }
+  
+  .number-display {
+    font-size: 6em;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .whiteboard-header h1 {
+    font-size: 2em;
+  }
+  
+  .number-display {
+    font-size: 5em;
+  }
+}
