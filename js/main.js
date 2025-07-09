@@ -44,16 +44,19 @@ function startCountUp(startDate, endDate) {
         if (timeDiff >= 0) {
             const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
             
+            if (now >= endDate) {
+                // Reset counter to 0 when end date is reached
+                const element = document.getElementById('days');
+                element.textContent = '0';
+                clearInterval(interval);
+                return;
+            }
+            
             if (!hasAnimated) {
                 animateCounterFromZero(days);
                 hasAnimated = true;
             } else {
                 updateCounterDisplay(days);
-            }
-            
-            if (now >= endDate) {
-                clearInterval(interval);
-                return;
             }
         }
     }
@@ -63,7 +66,7 @@ function startCountUp(startDate, endDate) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const startDate = new Date("Jun 09, 2025 00:00");
-    const endDate = new Date("Dec 31, 2025 23:59");
+    const startDate = new Date("Jul 9, 2025 00:00");
+    const endDate = new Date("Sep 26, 2025 23:59");
     startCountUp(startDate, endDate);
 });
